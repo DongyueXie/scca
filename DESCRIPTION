@@ -1,0 +1,20 @@
+Package: scca
+Type: Package
+Title: Sparse Canonical Correlation Analysis - Intergrated Methods
+Version: 0.1.0
+Author: Dongyue Xie <dongyxie@gmail.com>
+Maintainer: Dongyue Xie <dongyxie@gmail.com>
+Description: Sparse Canonical Correlation Analysis: l1 norm, elastic net, l0 norm, generalized scca.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Depends:
+        PMA,
+        genlasso,
+        glmnet,
+        MASS,
+        Matrix,
+        matrixcalc,
+        dirmult
+        

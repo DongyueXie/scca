@@ -4,7 +4,7 @@
 \alias{KFold}
 \title{KFold CV Index}
 \usage{
-KFold(x, k)
+KFold(idxs, k)
 }
 \arguments{
 \item{x:}{data matrix}

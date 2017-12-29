@@ -3,11 +3,10 @@
 #' @param k: number of folds
 #' @return A list of cv index
 #' @export
-KFold=function(x,k){
-  n=nrow(x)
-  p=ncol(x)
+KFold=function(idxs,k){
+  n=length(idxs)
   idx=list()
-  idxs=1:n
+  #idxs=1:n
   s=floor(n/k)
   rm=n%%k
   for(i in 1:k){

@@ -53,7 +53,7 @@ s0cca_simu = function(niter,u,v,n=50,data.type='normal',
     F1_u[iter]=2*sum(u_hat*trueu)/(2*sum(u_hat*trueu)+sum((u_hat-trueu)==1)+sum((u_hat-trueu)==-1))
     F1_v[iter]=2*sum(v_hat*truev)/(2*sum(v_hat*truev)+sum((v_hat-truev)==1)+sum((v_hat-truev)==-1))
     F1[iter]=(2*sum(u_hat*trueu)+2*sum(v_hat*truev))/((2*sum(u_hat*trueu)+sum((u_hat-trueu)==1)+sum((u_hat-trueu)==-1))+(2*sum(v_hat*truev)+sum((v_hat-truev)==1)+sum((v_hat-truev)==-1)))
-    if(verbose){print(sprintf('Iteration %s, TPR is %.2f, FPR is %.2f.',iter,TPR[iter],FPR[iter]))}
+    if(verbose&iter%%10==0){print(sprintf('Iteration %s, TPR is %.2f, FPR is %.2f.',iter,TPR[iter],FPR[iter]))}
   }
   return(list(n=n,p=p,q=q,corr=corrs,us=us,vs=vs,lambda=lambda,
               TPR=TPR,TPR_u=TPR_u,TPR_v=TPR_v,

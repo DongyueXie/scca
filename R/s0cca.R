@@ -9,8 +9,8 @@
 
 
 s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv'){
-  library(matrixcalc)
-  library(expm)
+  #library(matrixcalc)
+  #library(expm)
   n=dim(x)[1]
   p=dim(x)[2]
   q=dim(y)[2]
@@ -47,7 +47,7 @@ s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv')
   vs=c()
   rs=c()
 
-  idx=KFold(1:n,nfolds = 5)
+  idx=KFold(1:n,5)
 
   if(cv.method=='cv'){
     corr_vall=c()
@@ -63,7 +63,7 @@ s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv')
         x_val = x[idx[[j]],]
         y_train=y[-idx[[j]],]
         y_val = y[idx[[j]],]
-        train=cca.thresh2(x_train,y_train,u.proxy,v.proxy)
+        train=s0cca.thresh(x_train,y_train,u.proxy,v.proxy)
         x_val=x_val[,u.proxy!=0]
         y_val=y_val[,v.proxy!=0]
         x_val=cbind(x_val,rep(0,length(idx[[j]])))
@@ -74,7 +74,7 @@ s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv')
       corr_vall[i]=mean(corr_val)
     }
     ll=lambda[which.max(corr_vall)]
-    finalmodel=cca.final(x,y,ll)
+    finalmodel=s0cca.final(x,y,ll)
     return(list(u=finalmodel$u,v=finalmodel$v,corr=finalmodel$corr,lambda=ll))
   }else{
     #the other cv methods

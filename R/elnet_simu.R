@@ -27,6 +27,12 @@ elnet.cca.simu=function(niter,u,v,n=50,data.type='normal',
     if(data.type=='normal'){
       datax = GenStrucData_Normal(u=u,v=v,n=n,sigma_z = sigma_z,sigma_x = sigma_x,sigma_y = sigma_y)
     }
+    if(data.type=='normal_oth'){
+      datax = GenStrucData_Normal_oth(u=u,v=v,n=n,sigma_z = sigma_z,sigma_x = sigma_x,sigma_y = sigma_y)
+    }
+    if(data.type=='normal_mis'){
+      datax = GenStrucData_Normal_mis(u=u,v=v,n=n,sigma_z = sigma_z,sigma_x = sigma_x,sigma_y = sigma_y)
+    }
     if(data.type=='count_normal'){
       datax = GenStrucData_Count_normal(u=u,v=v,n=n,sigma_z = sigma_z,
                                         sigma_x = sigma_x,sigma_y = sigma_y,theta=theta,n_x=n_x,n_y=n_y)

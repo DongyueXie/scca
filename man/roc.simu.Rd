@@ -9,7 +9,7 @@ roc.simu(nroc = 1, u, v, n = 50, data.type = "normal", sigma_z = 1,
   n_y = 1000, lambda_z = 10, maxstep_s0 = NULL, penaltyx = seq(0, 1,
   length.out = 50), penaltyy = seq(0, 1, length.out = 50), alpha.u = seq(0,
   1, length.out = 10), alpha.v = seq(0, 1, length.out = 10), nlambda = 20,
-  edges, maxstep_gs = 30, gamma.u = seq(0, 5, length.out = 10),
+  edges, plain = T, maxstep_gs = 30, gamma.u = seq(0, 5, length.out = 10),
   gamma.v = seq(0, 5, length.out = 10))
 }
 \arguments{

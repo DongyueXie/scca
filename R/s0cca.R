@@ -8,7 +8,7 @@
 #' @export
 
 
-s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv'){
+s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv',K=5){
   #library(matrixcalc)
   #library(expm)
   n=dim(x)[1]
@@ -47,7 +47,7 @@ s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv')
   vs=c()
   rs=c()
 
-  idx=KFold(1:n,5)
+  idx=KFold(1:n,K)
 
   if(cv.method=='cv'){
     corr_vall=c()

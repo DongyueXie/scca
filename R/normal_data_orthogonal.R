@@ -11,7 +11,10 @@ GenStrucData_Normal_oth=function(u,v,n=50,sigma_z=1,sigma_x=NULL,sigma_y=NULL){
   x=c()
   y=c()
   u1=u;v1=v
-  u2=0.5*(-u1);v2=0.5*(-v1)
+  u2=u1;u2[which(u2!=0)[1:sum(u2!=0)/2]]=-u2[which(u2!=0)[1:sum(u2!=0)/2]]
+  u2=0.5*u2
+  v2=v1;v2[which(v2!=0)[1:sum(v2!=0)/2]]=-v2[which(v2!=0)[1:sum(v2!=0)/2]]
+  v2=0.5*v2
   for(i in 1:n){
     zi1=rnorm(1,0,sigma_z)
     zi2=rnorm(1,0,sigma_z)

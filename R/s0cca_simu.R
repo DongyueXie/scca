@@ -6,7 +6,7 @@
 s0cca_simu = function(niter,u,v,n=50,data.type='normal',
                       sigma_z=1,sigma_x=NULL,sigma_y=NULL,
                       theta=0.01,lambda_z=10,n_x=1000,n_y=1000,
-                      ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv',verbose=F){
+                      ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv',K=5,verbose=F){
   p=length(u);q=length(v)
   corrs=c()
   us=c()
@@ -43,7 +43,7 @@ s0cca_simu = function(niter,u,v,n=50,data.type='normal',
 
     #print(iter)
     result=s0cca(datax$x,datax$y,ncluster=ncluster,cluster.type=cluster.type,
-                 maxsteps=maxsteps,cv.method=cv.method)
+                 maxsteps=maxsteps,cv.method=cv.method,K=K)
     corrs[iter]=result$corr
     us=cbind(result$u,us)
     vs=cbind(result$v,vs)

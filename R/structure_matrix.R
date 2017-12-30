@@ -9,12 +9,14 @@ StrucMat=function(edges,x,plain=T){
   D = getDgSparse(gr)
   if(plain){return(D)}else{
     n=nrow(x);p=ncol(x);E=nrow(D)
-    cor.x=cor(x)+1
+    cor.x=cor(x)
+    cor.x=cor.x+abs(min(cor.x))
+    #cor.x.scaled=abs(cor.x)+1
     S=matrix(rep(0,E*p),nrow=E,ncol=p)
     for(i in 1:E){
       idx=which(D[i,]!=0)
       S[i,]=D[i,]*abs(cor.x[idx[1],idx[2]])
-      S[i,idx[1]]=sign(cor.x[idx[1],idx[2]])*S[i,idx[1]]
+      #S[i,idx[1]]=sign(cor.x[idx[1],idx[2]])*S[i,idx[1]]
     }
     S=as(S,'dgCMatrix')
     return(S)

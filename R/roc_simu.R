@@ -13,7 +13,7 @@ roc.simu=function(nroc=1,u,v,n=50,data.type='normal',
                   maxstep_s0=NULL,
                   penaltyx=seq(0,1,length.out = 50),penaltyy=seq(0,1,length.out = 50),
                   alpha.u=seq(0,1,length.out = 10),alpha.v=seq(0,1,length.out = 10),nlambda=20,
-                  edges,maxstep_gs=30,gamma.u=seq(0,5,length.out = 10),gamma.v=seq(0,5,length.out = 10)){
+                  edges,plain=T,maxstep_gs=30,gamma.u=seq(0,5,length.out = 10),gamma.v=seq(0,5,length.out = 10)){
   mats0=c()
   mats1=c()
   matelnet=c()
@@ -43,7 +43,7 @@ roc.simu=function(nroc=1,u,v,n=50,data.type='normal',
     s0=matrix(unlist(s0cca.roc(x,y,u,v,maxsteps=maxstep_s0)),ncol=6,byrow=F)
     s1=matrix(unlist(s1cca_roc(x,y,u,v,penaltyx,penaltyy)),ncol=6,byrow=F)
     en=matrix(unlist(elnet.cca.roc(x,y,u,v,alpha.u,alpha.v,nlambda)),ncol=6,byrow=F)
-    gs=matrix(unlist(gscca.roc(x,y,u,v,edges,maxstep_gs,gamma.u = gamma.u,gamma.v = gamma.v)),ncol=6,byrow=F)
+    gs=matrix(unlist(gscca.roc(x,y,u,v,edges,maxstep_gs,gamma.u = gamma.u,gamma.v = gamma.v,plain=plain)),ncol=6,byrow=F)
     mats0=rbind(mats0,s0)
     mats1=rbind(mats1,s1)
     matelnet=rbind(matelnet,en)

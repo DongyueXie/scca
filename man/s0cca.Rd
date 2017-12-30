@@ -5,7 +5,7 @@
 \title{Conduct s0cca}
 \usage{
 s0cca(x, y, ncluster = NULL, cluster.type = "no", maxsteps = 20,
-  cv.method = "cv")
+  cv.method = "cv", K = 5)
 }
 \arguments{
 \item{x, y:}{data matrix}

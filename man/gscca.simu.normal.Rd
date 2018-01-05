@@ -9,7 +9,7 @@ gscca.simu.normal(niter, edges, u, v, n = 50, data.type = "normal",
   lambda_z = 10, n_x = 1000, n_y = 1000, cv.method = "bic",
   gamma.u = NULL, gamma.v = NULL, lambda.u = NULL, lambda.v = NULL,
   maxsteps = 20, plain = T, Sx = NULL, Sy = NULL, verbose = F,
-  K = 5)
+  K = 5, ccor = F)
 }
 \arguments{
 \item{gamma.u, gamma.v:}{ratio of l1 peanlty and fused penalty}
@@ -19,6 +19,8 @@ gscca.simu.normal(niter, edges, u, v, n = 50, data.type = "normal",
 \item{Sx, Sy:}{structure matrix for Sx,Sy.}
 
 \item{maxsteps:}{the number of lambdas to try, default to be 20. Largest 20 values from solution path}
+
+\item{ccor:}{whether re-estiamte the coeeficient when doing BIC}
 }
 \description{
 Simulation for gscca

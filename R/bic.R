@@ -9,6 +9,7 @@
 bic.cca=function(n,b,r){
   return(n*log(1-r^2)+sum(b!=0)*log(n))
 }
+
 ebic.cca=function(n,b,r,g=0.5){
   return(n*log(1-r^2)+sum(b!=0)*log(n)+2*sum(b!=0)*g*log(length(b)))
 }

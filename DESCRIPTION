@@ -16,5 +16,10 @@ Depends:
         MASS,
         Matrix,
         matrixcalc,
-        dirmult
+        dirmult,
+        rhdf5,
+        biom,
+        phyloseq,
+        HMP
+        
         

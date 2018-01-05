@@ -3,13 +3,14 @@
 #' @param lambda.u,lambda.v: fused penalty. lambda*fused penalty+gamma*lambda*l1 penalty.
 #' @param Sx,Sy: structure matrix for Sx,Sy.
 #' @param maxsteps: the number of lambdas to try, default to be 20. Largest 20 values from solution path
+#' @param ccor: whether re-estiamte the coeeficient when doing BIC
 #' @export
 gscca.simu.normal=function(niter,edges,u,v,n=50,data.type='normal',
                            sigma_z=1,sigma_x=NULL,sigma_y=NULL,
                            theta=0.01,lambda_z=10,n_x=1000,n_y=1000,
                            cv.method='bic',gamma.u=NULL,gamma.v=NULL,
                            lambda.u=NULL,lambda.v=NULL,maxsteps=20,plain=T,
-                           Sx=NULL,Sy=NULL,verbose=F,K=5){
+                           Sx=NULL,Sy=NULL,verbose=F,K=5,ccor=F){
   p=length(u);q=length(v)
   corrs=c()
   us=c()
@@ -55,26 +56,25 @@ gscca.simu.normal=function(niter,edges,u,v,n=50,data.type='normal',
 
       #print(gamma.u);print(gamma.v)
     }
-    if(cv.method=='bic'){
-      gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
+    gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
                             lambda.u = lambda.u,lambda.v = lambda.v,
-                            maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method)
-    }
-    if(cv.method=='ebic'){
-      gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
-                            lambda.u = lambda.u,lambda.v = lambda.v,
-                            maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method)
-    }
-    if(cv.method=='hbic'){
-      gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
-                            lambda.u = lambda.u,lambda.v = lambda.v,
-                            maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method)
-    }
-    if(cv.method=='gic'){
-      gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
-                            lambda.u = lambda.u,lambda.v = lambda.v,
-                            maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method)
-    }
+                            maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method,ccor=ccor)
+
+    # if(cv.method=='ebic'){
+    #   gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
+    #                         lambda.u = lambda.u,lambda.v = lambda.v,
+    #                         maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method)
+    # }
+    # if(cv.method=='hbic'){
+    #   gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
+    #                         lambda.u = lambda.u,lambda.v = lambda.v,
+    #                         maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method)
+    # }
+    # if(cv.method=='gic'){
+    #   gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
+    #                         lambda.u = lambda.u,lambda.v = lambda.v,
+    #                         maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method)
+    # }
 
     para_opt=cbind(para_opt,gscca.model$best.param)
     corrs[j]=gscca.model$corr

@@ -6,10 +6,12 @@
 \usage{
 gscca.bic(x, y, edges, maxsteps = 2000, plain = T, cv.method = "bic",
   gamma.u, gamma.v, lambda.u = NULL, lambda.v = NULL, Sx = NULL,
-  Sy = NULL)
+  Sy = NULL, ccor = F)
 }
 \arguments{
 \item{gamma, lambda:}{lambda*fused penalty+gamma*lambda*l1 penalty.}
+
+\item{ccor:}{whether re-estiamte the coeeficient when doing BIC}
 }
 \value{
 estimated coefficients, correlation and optimal parameters

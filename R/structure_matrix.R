@@ -18,6 +18,7 @@ StrucMat=function(edges,x,plain=T){
       S[i,]=D[i,]*abs(cor.x[idx[1],idx[2]])
       #S[i,idx[1]]=sign(cor.x[idx[1],idx[2]])*S[i,idx[1]]
     }
+    #S=rbind(S,diag(p)*gamma)
     S=as(S,'dgCMatrix')
     return(S)
   }

@@ -64,7 +64,7 @@ gscca.bic=function(x,y,edges,maxsteps=2000,plain=T,cv.method='bic',
   u.hat=softthresh(out.u,lambda.u.opt,gamma.u.opt)
   v.hat=softthresh(out.v,lambda.v.opt,gamma.v.opt)
   corr=ifelse(ccor,cca.cor(x,y,u.hat,v.hat),cor(x%*%u.hat,y%*%v.hat))
-  return(list(u=u.hat,v=v.hat,corr=corr,
+  return(list(u=u.hat,v=v.hat,corr=corr,corr.re=cca.cor(x,y,u.hat,v.hat),
               best.param=c(lambda.u.opt,lambda.v.opt,gamma.u.opt,gamma.v.opt)))
 }
 

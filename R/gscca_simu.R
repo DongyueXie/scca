@@ -5,7 +5,7 @@
 #' @param maxsteps: the number of lambdas to try, default to be 20. Largest 20 values from solution path
 #' @param ccor: whether re-estiamte the coeeficient when doing BIC
 #' @export
-gscca.simu.normal=function(niter,edges,u,v,n=50,data.type='normal',
+gscca.simu.normal=function(niter,edgex,edgey,u,v,n=50,data.type='normal',
                            sigma_z=1,sigma_x=NULL,sigma_y=NULL,
                            theta=0.01,lambda_z=10,n_x=1000,n_y=1000,
                            cv.method='bic',gamma.u=NULL,gamma.v=NULL,
@@ -56,7 +56,7 @@ gscca.simu.normal=function(niter,edges,u,v,n=50,data.type='normal',
 
       #print(gamma.u);print(gamma.v)
     }
-    gscca.model=gscca.bic(x,y,edges=edges,gamma.u=gamma.u,gamma.v=gamma.v,
+    gscca.model=gscca.bic(x,y,edgex=edgex,edgey=edgey,gamma.u=gamma.u,gamma.v=gamma.v,
                             lambda.u = lambda.u,lambda.v = lambda.v,
                             maxsteps = maxsteps,plain = plain,Sx=Sx,Sy=Sy,cv.method=cv.method,ccor=ccor)
 

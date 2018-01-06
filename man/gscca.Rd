@@ -4,8 +4,8 @@
 \alias{gscca}
 \title{Implement gscca model}
 \usage{
-gscca(x, y, edges, maxsteps = 2000, minlam.u = NULL, minlam.v = NULL,
-  plain = T, Sx = NULL, Sy = NULL)
+gscca(x, y, edgex, edgey, maxsteps = 2000, minlam.u = NULL,
+  minlam.v = NULL, plain = T, Sx = NULL, Sy = NULL)
 }
 \arguments{
 \item{minlam:}{the minimum lambda at which path algo should stop.}

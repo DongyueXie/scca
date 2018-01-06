@@ -3,10 +3,10 @@
 #' @param ccor: whether re-estiamte the coeeficient when doing BIC
 #' @return estimated coefficients, correlation and optimal parameters
 #' @export
-gscca.bic=function(x,y,edges,maxsteps=2000,plain=T,cv.method='bic',
+gscca.bic=function(x,y,edgex,edgey,maxsteps=2000,plain=T,cv.method='bic',
                    gamma.u,gamma.v,lambda.u=NULL,lambda.v=NULL,Sx=NULL,Sy=NULL,ccor=F){
   n=dim(x)[1]
-  init=gscca(x=x,y=y,edges=edges,maxsteps=maxsteps,plain=plain,Sx=Sx,Sy=Sy)
+  init=gscca(x=x,y=y,edgex=edgex,edgey=edgey,maxsteps=maxsteps,plain=plain,Sx=Sx,Sy=Sy)
   out.u=init$out.u
   out.v=init$out.v
   if(is.null(lambda.u)){lambda.u=out.u$lambda}
@@ -65,6 +65,6 @@ gscca.bic=function(x,y,edges,maxsteps=2000,plain=T,cv.method='bic',
   v.hat=softthresh(out.v,lambda.v.opt,gamma.v.opt)
   corr=ifelse(ccor,cca.cor(x,y,u.hat,v.hat),cor(x%*%u.hat,y%*%v.hat))
   return(list(u=u.hat,v=v.hat,corr=corr,corr.re=cca.cor(x,y,u.hat,v.hat),
-              best.param=c(lambda.u.opt,lambda.v.opt,gamma.u.opt,gamma.v.opt)))
+              best.param=c(lambda.u.opt,lambda.v.opt,gamma.u.opt,gamma.v.opt),bic.u=min(score[,5],na.rm=T),bic.v=min(score[,6],na.rm=T)))
 }
 

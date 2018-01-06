@@ -4,7 +4,7 @@
 \alias{gscca.simu.normal}
 \title{Simulation for gscca}
 \usage{
-gscca.simu.normal(niter, edges, u, v, n = 50, data.type = "normal",
+gscca.simu.normal(niter, edgex, edgey, u, v, n = 50, data.type = "normal",
   sigma_z = 1, sigma_x = NULL, sigma_y = NULL, theta = 0.01,
   lambda_z = 10, n_x = 1000, n_y = 1000, cv.method = "bic",
   gamma.u = NULL, gamma.v = NULL, lambda.u = NULL, lambda.v = NULL,

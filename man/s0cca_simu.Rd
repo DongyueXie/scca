@@ -7,7 +7,7 @@
 s0cca_simu(niter, u, v, n = 50, data.type = "normal", sigma_z = 1,
   sigma_x = NULL, sigma_y = NULL, theta = 0.01, lambda_z = 10,
   n_x = 1000, n_y = 1000, ncluster = NULL, cluster.type = "no",
-  maxsteps = 20, cv.method = "cv", K = 5, verbose = F)
+  maxsteps = 20, cv.method = "cv", K = 5, verbose = F, covI = T)
 }
 \arguments{
 \item{niter:}{the number of simulation iterations}

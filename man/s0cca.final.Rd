@@ -4,7 +4,7 @@
 \alias{s0cca.final}
 \title{Final s0cca model calculation}
 \usage{
-s0cca.final(x, y, lambda, covI = F)
+s0cca.final(x, y, lambda, covI = T)
 }
 \arguments{
 \item{x, y:}{data matrix}

@@ -6,7 +6,7 @@
 \usage{
 gscca.bic(x, y, edgex, edgey, maxsteps = 2000, plain = T,
   cv.method = "bic", gamma.u, gamma.v, lambda.u = NULL, lambda.v = NULL,
-  Sx = NULL, Sy = NULL, ccor = F)
+  Sx = NULL, Sy = NULL, ccor = F, thresh = 0.5)
 }
 \arguments{
 \item{gamma, lambda:}{lambda*fused penalty+gamma*lambda*l1 penalty.}

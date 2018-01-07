@@ -10,14 +10,13 @@
 #' @export
 GenStrucMat=function(x,tree,p_c=1,
                      dis=F,p_d=1,h=0.1,
-                     wcorr=F){
+                     wcorr=F,thresh=0.5){
   p=dim(x)[2]
   distMat=cophenetic(tree)
   diag(distMat)=1
   cor.x=cor(x)
-  cor_x=cor.x+abs(min(cor.x))
-  #cor_x=cor_x-diag(diag(cor_x));cor_x=2*(cor_x)/(max(cor_x))
-  #cor_x=exp(cor_x)-1
+  #cor_x=cor.x+abs(min(cor.x))
+  cor_x=ifelse(cor_x<=thresh,0,1)
   #thresholdig the distMat to control the complexity of structural penalty
   distMat = ifelse(distMat>quantile(distMat,h),Inf,distMat)
   if(dis==F){

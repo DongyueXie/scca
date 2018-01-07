@@ -8,7 +8,7 @@
 #' @export
 
 
-s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv',K=5){
+s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv',K=5,covI=T){
   #library(matrixcalc)
   #library(expm)
   n=dim(x)[1]
@@ -63,7 +63,7 @@ s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv',
         x_val = x[idx[[j]],]
         y_train=y[-idx[[j]],]
         y_val = y[idx[[j]],]
-        train=s0cca.thresh(x_train,y_train,u.proxy,v.proxy)
+        train=s0cca.thresh(x_train,y_train,u.proxy,v.proxy,covI)
         x_val=x_val[,u.proxy!=0]
         y_val=y_val[,v.proxy!=0]
         x_val=cbind(x_val,rep(0,length(idx[[j]])))
@@ -74,7 +74,7 @@ s0cca = function(x,y,ncluster=NULL,cluster.type='no',maxsteps=20,cv.method='cv',
       corr_vall[i]=mean(corr_val)
     }
     ll=lambda[which.max(corr_vall)]
-    finalmodel=s0cca.final(x,y,ll)
+    finalmodel=s0cca.final(x,y,ll,covI)
     return(list(u=finalmodel$u,v=finalmodel$v,corr=finalmodel$corr,lambda=ll))
   }else{
     #the other cv methods

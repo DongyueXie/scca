@@ -5,7 +5,7 @@
 \title{Implement gscca model}
 \usage{
 gscca(x, y, edgex, edgey, maxsteps = 2000, minlam.u = NULL,
-  minlam.v = NULL, plain = T, Sx = NULL, Sy = NULL)
+  minlam.v = NULL, plain = T, Sx = NULL, Sy = NULL, thresh = 0.5)
 }
 \arguments{
 \item{minlam:}{the minimum lambda at which path algo should stop.}

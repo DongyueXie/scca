@@ -15,11 +15,7 @@ Depends:
         glmnet,
         MASS,
         Matrix,
-        matrixcalc,
-        dirmult,
-        rhdf5,
-        biom,
-        phyloseq,
-        HMP
+        dirmult
+        
         
         

@@ -4,7 +4,7 @@
 \alias{s0cca.thresh}
 \title{CV function for s0cca}
 \usage{
-s0cca.thresh(x, y, u, v)
+s0cca.thresh(x, y, u, v, covI = T)
 }
 \arguments{
 \item{x, y:}{data}

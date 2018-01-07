@@ -4,7 +4,7 @@
 \alias{StrucMat}
 \title{Generate Structure Matrix in gscca}
 \usage{
-StrucMat(edges, x, plain = T)
+StrucMat(edges, x, plain = T, thresh = 0.5)
 }
 \arguments{
 \item{edges:}{the edges of graph structure, see peacakge igraph}

@@ -4,9 +4,9 @@
 #' @return estimated coefficients, correlation and optimal parameters
 #' @export
 gscca.bic=function(x,y,edgex,edgey,maxsteps=2000,plain=T,cv.method='bic',
-                   gamma.u,gamma.v,lambda.u=NULL,lambda.v=NULL,Sx=NULL,Sy=NULL,ccor=F){
+                   gamma.u,gamma.v,lambda.u=NULL,lambda.v=NULL,Sx=NULL,Sy=NULL,ccor=F,thresh=0.5){
   n=dim(x)[1]
-  init=gscca(x=x,y=y,edgex=edgex,edgey=edgey,maxsteps=maxsteps,plain=plain,Sx=Sx,Sy=Sy)
+  init=gscca(x=x,y=y,edgex=edgex,edgey=edgey,maxsteps=maxsteps,plain=plain,Sx=Sx,Sy=Sy,thresh=thresh)
   out.u=init$out.u
   out.v=init$out.v
   if(is.null(lambda.u)){lambda.u=out.u$lambda}

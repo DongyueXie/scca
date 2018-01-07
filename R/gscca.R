@@ -2,7 +2,7 @@
 #' @param minlam: the minimum lambda at which path algo should stop.
 #' @return canonical correlation coefficients
 #' @export
-gscca=function(x,y,edgex,edgey,maxsteps=2000,minlam.u=NULL,minlam.v=NULL,plain=T,Sx=NULL,Sy=NULL){
+gscca=function(x,y,edgex,edgey,maxsteps=2000,minlam.u=NULL,minlam.v=NULL,plain=T,Sx=NULL,Sy=NULL,thresh=0.5){
   #initialize
   n=nrow(x);p=ncol(x);q=ncol(y)
   cor.xy=cor(x,y)
@@ -11,9 +11,9 @@ gscca=function(x,y,edgex,edgey,maxsteps=2000,minlam.u=NULL,minlam.v=NULL,plain=T
   y.u=cor.xy%*%v0
   y.v=t(cor.xy)%*%u0
   if(is.null(Sx)){
-    Sx=StrucMat(edgex,x,plain)
+    Sx=StrucMat(edgex,x,plain,thresh)
     if(identical(fusedlasso(y.u,D=Sx,maxsteps=2)$lambda,0)){
-      Sx=StrucMat(edgex,x,T)
+      Sx=StrucMat(edgex,x,T,thresh)
     }
   }else{
     if(identical(fusedlasso(y.u,D=Sx,maxsteps=2)$lambda,0)){
@@ -21,9 +21,9 @@ gscca=function(x,y,edgex,edgey,maxsteps=2000,minlam.u=NULL,minlam.v=NULL,plain=T
     }
   }
   if(is.null(Sy)){
-    Sy=StrucMat(edgey,y,plain)
+    Sy=StrucMat(edgey,y,plain,thresh)
     if(identical(fusedlasso(y.v,D=Sy,maxsteps=2)$lambda,0)){
-      Sy=StrucMat(edgey,y,T)
+      Sy=StrucMat(edgey,y,T,thresh)
     }
   }else{
     if(identical(fusedlasso(y.v,D=Sy,maxsteps=2)$lambda,0)){

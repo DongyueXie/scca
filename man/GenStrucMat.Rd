@@ -4,7 +4,8 @@
 \alias{GenStrucMat}
 \title{Function to generate structure matrix using ape tree object}
 \usage{
-GenStrucMat(x, tree, p_c = 1, dis = F, p_d = 1, h = 0.1, wcorr = F)
+GenStrucMat(x, tree, p_c = 1, dis = F, p_d = 1, h = 0.1, wcorr = F,
+  thresh = 0.5)
 }
 \arguments{
 \item{x:}{data matrix}

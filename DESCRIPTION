@@ -15,7 +15,8 @@ Depends:
         glmnet,
         MASS,
         Matrix,
-        dirmult
+        dirmult,
+        phyloseq
         
         
         

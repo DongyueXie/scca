@@ -14,7 +14,7 @@ GenStrucMat=function(x,tree,p_c=1,
   p=dim(x)[2]
   distMat=cophenetic(tree)
   diag(distMat)=1
-  cor.x=cor(x)
+  cor_x=cor(x)
   #cor_x=cor.x+abs(min(cor.x))
   cor_x=ifelse(cor_x<=thresh,0,1)
   #thresholdig the distMat to control the complexity of structural penalty

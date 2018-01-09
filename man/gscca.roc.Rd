@@ -4,8 +4,8 @@
 \alias{gscca.roc}
 \title{ROC curve, gscca}
 \usage{
-gscca.roc(x, y, u, v, edges, maxsteps = 20, plain = T, gamma.u, gamma.v,
-  lambda.u = NULL, lambda.v = NULL, Sx = NULL, Sy = NULL)
+gscca.roc(x, y, u, v, edgex, edgey, maxsteps = 20, plain = T, gamma.u,
+  gamma.v, lambda.u = NULL, lambda.v = NULL, Sx = NULL, Sy = NULL)
 }
 \value{
 a list containing TPR,FPR

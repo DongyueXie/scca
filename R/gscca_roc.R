@@ -2,10 +2,10 @@
 #' @return a list containing TPR,FPR
 #' @export
 
-gscca.roc=function(x,y,u,v,edges,maxsteps=20,plain=T,
+gscca.roc=function(x,y,u,v,edgex,edgey,maxsteps=20,plain=T,
                    gamma.u,gamma.v,lambda.u=NULL,lambda.v=NULL,Sx=NULL,Sy=NULL){
   n=dim(x)[1]
-  init=gscca(x=x,y=y,edges=edges,maxsteps=maxsteps,plain=plain,Sx=Sx,Sy=Sy)
+  init=gscca(x=x,y=y,edgex=edgex,edgey=edgey,maxsteps=maxsteps,plain=plain,Sx=Sx,Sy=Sy)
   out.u=init$out.u
   out.v=init$out.v
   if(is.null(lambda.u)){lambda.u=out.u$lambda}
